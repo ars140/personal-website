@@ -1,0 +1,56 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+{% block content %}
+
+<div class="post">
+    <h1>
+        Recent Posts
+    </h1>
+    <div class="linesep"></div>
+</div>
+
+{% for post in posts %}
+    <div class="post">
+        <h2>
+            <a href="{{ post.get_absolute_url }}" class="link_no_color">{{ post.title }}</a>
+        </h2>
+        <h5>
+            {{ post.created }} | Tags: {{ post.tags.all|join:", " }}
+        </h5>
+        <p>
+            {{ post.markdownize }}
+        </p>
+        <br>
+        <div class="linesep"></div>
+    </div>
+{% endfor %}
+
+{% if posts.has_other_pages %}
+    <div class="post">
+        <br>
+        <div class="pagenav">
+            {% if posts.has_previous %}
+                <a href="?page={{ posts.previous_page_number }}">&laquo;</a>
+            {% else %}
+                <a class="disabled"><span>&laquo;</span></a>
+            {% endif %}
+
+            {% for i in posts.paginator.page_range %}
+                {% if posts.number == i %}
+                    <a class="active" href="#">{{ i }}</a>
+                {% else %}
+                    <a href="?page={{ i }}">{{ i }}</a>
+                {% endif %}
+            {% endfor %}
+
+            {% if posts.has_next %}
+                <a href="?page={{ posts.next_page_number }}">&raquo;</a>
+            {% else %}
+                <a class="disabled"><span>&raquo;</span></a>
+            {% endif %}
+        </div>
+        <br>
+    </div>
+{% endif %}
+{% endblock %}

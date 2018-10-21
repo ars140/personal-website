@@ -1,0 +1,51 @@
+
+{% extends "base_generic.html" %}
+{% load static %}
+
+{% block content %}
+    <div class="post">
+        <h1>
+            Projects
+        </h1>
+        <div class="linesep"></div>
+
+        {% for project in projects %}
+            <h2>
+                {{ project.title }}
+            </h2>
+            <h5>
+                {{ project.created }} | {{ project.project_id }}
+            </h5>
+            <p>
+                {{ project.markdownize }}
+            </p>
+
+            {% if project.associated_posts|length > 0 %}
+                <h3>
+                    Here is a list of relevant posts for this project:
+                </h3>
+                <ul>
+                    {% for post in project.associated_posts %}
+                        <li>
+                            <b>
+                                <a href="{{ post.get_absolute_url }}" class="link_no_color">{{ post.title }}</a>:
+                            </b>
+                            {% with truncate_length=10 %}
+                                {% if post.markdownize|striptags|wordcount < truncate_length %}
+                                    {{ post.markdownize|striptags }}
+                                {% else %}
+                                    {{ post.markdownize|striptags|truncatewords_html:truncate_length }}
+                                {% endif %}
+                            {% endwith %}
+                            <i>
+                                <a href="{{ post.get_absolute_url }}" class="link_no_color">(Read Full Post)</a>
+                            </i>
+                        </li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <br>
+            <div class="linesep"></div>
+        {% endfor %}
+    </div>
+{% endblock %}

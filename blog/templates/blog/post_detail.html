@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+
+    <div class="post">
+        <h1>Recent Posts</h1>
+        <div class="linesep"></div>
+    </div>
+
+    <div class="post">
+        <h2>{{ post.title }}</h2>
+        <h5>{{ post.created }} | Tags: {{ post.tags.all|join:", " }}</h5>
+        <p>{{ post.markdownize }}</p>
+        <br>
+        <div class="linesep"></div>
+    </div>
+
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% load static %}
+
+{% block content %}
+<div class="post">
+    {% with bio_post=bio.0 %}
+        <h2>
+            <a href="{{ bio_post.get_absolute_url }}" class="link_no_color">{{ bio_post.title }}</a>
+        </h2>
+        <p>
+            {{ bio_post.markdownize }}
+        </p>
+        <br>
+        <div class="linesep"></div>
+    {% endwith %}
+</div>
+{% endblock %}

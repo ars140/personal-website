@@ -1,0 +1,58 @@
+
+{% load static %}
+
+<!DOCTYPE html>
+
+<html lang="en">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <head>
+        <title>
+            Alexander Sieman
+        </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="header" style="background-image:url({% static "files/background2.jpg" %})">
+            <h1>
+                Alexander Sieman
+            </h1>
+            <p>
+                <i>
+                    Electrical Engineer at GE Power Conversion<br>Focused on embedded systems, controls, and software.
+                </i>
+            </p>
+        </div>
+
+        <div class="masthead"></div>
+
+        <div class="navigation">
+            <a href="/about/">About</a>
+            <a href="/posts/">Posts</a>
+            <a href="/projects/">Projects</a>
+
+            <a class=contact-icon href="https://github.com/ars140">
+                <i class="fab fa-github-square fa-2x"></i> <!-- Github Link -->
+            </a>
+            <a class=contact-icon href="https://twitter.com/alex_sieman">
+                <i class="fab fa-twitter-square fa-2x"></i> <!-- Twitter Link -->
+            </a>
+            <a class=contact-icon href="https://www.linkedin.com/in/alexander-sieman-86739a9a/">
+                <i class="fab fa-linkedin fa-2x"></i> <!-- LinkedIn Link -->
+            </a>
+            <a class=contact-icon href="mailto:alexander.sieman@gmail.com">
+                <i class="fas fa-envelope-square fa-2x"></i> <!-- Email Link -->
+            </a>
+        </div>
+
+        {% block content %}
+        {% endblock %}
+
+        <div class="footer">
+            <i>
+                ©&nbsp;2018 Alexander Sieman
+            </i>
+        </div>
+    </body>
+</html>
